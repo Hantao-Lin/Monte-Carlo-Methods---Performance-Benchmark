@@ -1,0 +1,6 @@
+MEAN Test: 0.40269
+RMSE Test: 0.00053
+MAE Test: 0.00036
+R^2 Test: 0.99790
+Execution Time: 2.6680781841278076 seconds
+Memory Usage: 269.58203125 MB

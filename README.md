@@ -32,4 +32,24 @@ Following the simulation, we applied machine learning techniques to predict flow
 ### Computational Efficiency
 The execution time and memory usage were recorded in both Python (using time and psutil) and R (using Sys.time and pryr::mem_used), providing insights into the computational efficiency of the simulation and modeling processes across both programming environments.
 ## Results
+- [Python](https://github.com/Hantao-Lin/Monte-Carlo-Methods---Performance-Benchmark/blob/main/results/python_results.txt): 
+<img title="Python Distribution" alt="python histogram" src="https://github.com/Hantao-Lin/Monte-Carlo-Methods---Performance-Benchmark/blob/main/results/python_distribution.png">
+
+- [R](https://github.com/Hantao-Lin/Monte-Carlo-Methods---Performance-Benchmark/blob/main/results/R_results.txt): 
+<img title="Python Distribution" alt="python histogram" src="https://github.com/Hantao-Lin/Monte-Carlo-Methods---Performance-Benchmark/blob/main/results/R_distribution.png">
+
+| Metric       | Python    | R |
+|--------------|-----------|------------|
+| Mean | 0.40269      | 0.40269       |
+| RMSE      | 0.00053  | 0.00149       |
+| MAE      | 0.00036  | 0.00095       |
+| R^2      | 0.99790  | 0.98426       |
+| Execution Time      | 2.67 sec | 31.82 sec     |
+| Memory     | 269.58 MB  | 208.83  MB       |
+
+This comparative study of Python and R for simulating fluid flow through orifices using the Monte Carlo simulation has yielded several key findings. The histograms representing the standard distribution of Q values display the simulated probability density of flow rates, show similar distributions with Python's simulation results indicating a slightly narrower peak around the mean value compared to R's results. The statistical analysis showed that Python had a lower root mean square error (RMSE) of 0.00053 compared to R's RMSE of 0.00149, and a lower mean absolute error (MAE) of 0.00036 against R's MAE of 0.00095, indicating a higher precision in Python's simulation results. Furthermore, the coefficient of determination (R^2) was higher in Python than in R, signifying that Python's model predictions were closer to the actual data.
+
+In terms of computational performance, Python demonstrated a significant advantage with an execution time of approximately 2.67 seconds, which is notably faster than R's 31.82 seconds. However, R was more memory-efficient, consuming around 208.83 MB, whereas Python used approximately 269.58 MB.
+
 ## Conclusions
+The findings of this study suggest that while both Python and R are capable tools for simulating fluid flow through orifices, Python has shown superior performance in terms of accuracy and speed. Python's faster execution time and higher precision make it a preferable choice for simulations where these factors are critical. This study enhances the understanding of the practical applications of fluid dynamics simulations and provides a basis for selecting appropriate computational tools based on the needs of the simulation.

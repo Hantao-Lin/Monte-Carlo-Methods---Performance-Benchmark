@@ -1,0 +1,124 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(randomForest)
+library(Metrics)
+library(caret)
+library(caTools)
+```
+
+
+```{r}
+
+start_time <- Sys.time()
+set.seed(123)
+
+# Define the number of simulations
+num_simulations <- 100000
+
+# Define the limits for a, b, and c
+Cd_limits <- c(0.62, 0.64)  # Discharge Coefficient for sharp edge orifice (unitless)
+dia_limits <- c(0.024, 0.026)  # Orifice Diameter (in)
+dP_limits <- c(950, 1050)  # pressure drop (psi)
+Sg_limits <- c(0.840, 0.860)  # (specific gravity)
+
+# Calculate mean values
+Cd_mean <- mean(Cd_limits)
+dia_mean <- mean(dia_limits)
+dP_mean <- mean(dP_limits)
+Sg_mean <- mean(Sg_limits)
+
+# Calculate standard deviation values
+Cd_stdev <- (Cd_limits[2] - Cd_limits[1]) / 6
+dia_stdev <- (dia_limits[2] - dia_limits[1]) / 6
+dP_stdev <- (dP_limits[2] - dP_limits[1]) / 6
+Sg_stdev <- (Sg_limits[2] - Sg_limits[1]) / 6
+
+
+Cd <- rnorm(n = num_simulations, mean = Cd_mean, sd = Cd_stdev)
+dia <- rnorm(n = num_simulations, mean = dia_mean, sd = dia_stdev)
+dP <- rnorm(n = num_simulations, mean = dP_mean, sd = dP_stdev)
+Sg <- rnorm(n = num_simulations, mean = Sg_mean, sd = Sg_stdev)
+
+
+Q <- 29.81 * Cd * (dia^2) * sqrt(dP/Sg)
+
+
+
+```
+
+
+```{r}
+# Plot the standard distribution of Q values
+hist(Q, breaks = 30, prob = TRUE, col = 'blue', border = 'black', main = 'Standard Distribution of Q Values', xlab = 'Q', ylab = 'Probability Density')
+grid()
+
+
+```
+
+
+
+```{r}
+
+set.seed(123)
+
+TARGET_A <- "Q"
+
+Y <- data.frame(Q = Q)
+
+X <- data.frame(
+  Cd = Cd,
+  dia = dia,
+  dP = dP,
+  Sg = Sg
+)
+
+split <- sample.split(Y$Q, SplitRatio = 0.8)
+X_train <- subset(X, split == TRUE)
+X_test <- subset(X, split == FALSE)
+Y_train <- subset(Y, split == TRUE)
+Y_test <- subset(Y, split == FALSE)
+
+```
+
+
+
+```{r}
+
+set.seed(123)
+
+# Create and train the random forest model
+amt_m01_RF <- randomForest(Q ~ Cd + dia + dP + Sg, data = cbind(X_train, Y_train), ntree = 7)
+
+# Predict on training and test sets
+Y_Pred_train <- predict(amt_m01_RF, newdata = X_train)
+Y_Pred_test <- predict(amt_m01_RF, newdata = X_test)
+
+
+# Calculate evaluation metrics
+RMSE_TEST <- sqrt(mean((Y_test$Q - Y_Pred_test)^2))
+MAE_TEST <- mean(abs(Y_test$Q - Y_Pred_test))
+R2_TEST <- R2(Y_Pred_test, Y_test$Q)
+
+# Print the results
+cat("MEAN Test: ", mean(Y_test$Q), "\n")
+cat("RMSE Test: ", RMSE_TEST, "\n")
+cat("MAE Test: ", MAE_TEST, "\n")
+cat("R^2 Test: ", R2_TEST, "\n")
+
+
+# Record end time
+end_time <- Sys.time()
+execution_time <- end_time - start_time
+
+# Get memory usage
+memory_info <- pryr::mem_used()
+
+
+cat(paste("Execution Time: ", execution_time, " seconds\n"))
+cat(paste("Memory Usage: ", memory_info / 1024 / 1024, " MB\n"))
+
+```
+

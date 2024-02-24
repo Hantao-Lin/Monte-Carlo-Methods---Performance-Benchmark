@@ -1,4 +1,4 @@
-# Monte-Carlo-Methods---Performance-Benchmark
+# Monte Carlo Methods - Performance-Benchmark
 ## Abstract 
 Efficient management of fluid flow through orifices is fundamental in engineering disciplines, necessitating precise simulations to predict flow rates under varying operational conditions. This research presents a comparative study employing both Python and R programming environments to simulate and analyze the impact of critical parameters—discharge coefficient (Cd), orifice diameter (dia), pressure drop (dP), and specific gravity (Sg)—on the flow rate (Q) through an orifice. Utilizing a Monte Carlo simulation framework, we generated 100,000 scenarios in each programming environment, where the parameters were allowed to vary within predefined limits, thereby mimicking real-world variability and uncertainties.
 
@@ -27,8 +27,8 @@ The distribution of the calculated Q values was visualized using histograms in b
 ### Predictive Modeling Using Random Forest
 Following the simulation, we applied machine learning techniques to predict flow rates based on the input parameters. A Random Forest regression model was trained using the generated dataset, split into training and test subsets to evaluate model performance.
 ### Model Training and Evaluation
-- Python Implementation: Utilized RandomForestRegressor from sklearn.ensemble to train the model. Model performance was evaluated using metrics such as RMSE (Root Mean Square Error), MAE (Mean Absolute Error), and R^2.
-- R Implementation: Employed the randomForest package to create and train the model, with similar evaluation metrics calculated for assessing model accuracy.
+- [Python Implementation](https://github.com/Hantao-Lin/Monte-Carlo-Methods---Performance-Benchmark/blob/main/Group%20assignment%204.ipynb): Utilized RandomForestRegressor from sklearn.ensemble to train the model. Model performance was evaluated using metrics such as RMSE (Root Mean Square Error), MAE (Mean Absolute Error), and R^2.
+- [R Implementation](https://github.com/Hantao-Lin/Monte-Carlo-Methods---Performance-Benchmark/blob/main/Group%20assignment%204.Rmd): Employed the randomForest package to create and train the model, with similar evaluation metrics calculated for assessing model accuracy.
 ### Computational Efficiency
 The execution time and memory usage were recorded in both Python (using time and psutil) and R (using Sys.time and pryr::mem_used), providing insights into the computational efficiency of the simulation and modeling processes across both programming environments.
 ## Results

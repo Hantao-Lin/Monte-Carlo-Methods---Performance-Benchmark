@@ -15,7 +15,14 @@ This study embarks on a comparative exploration of Python and R in simulating fl
 
 In doing so, this research contributes to the broader field of computational fluid dynamics by providing a detailed analysis of flow through orifices under varied conditions, thereby informing the design and optimization of related engineering systems. Furthermore, by comparing the simulation processes and outcomes in Python and R, the study sheds light on the practical considerations of conducting such analyses, including the implications for engineering education, research, and practice.
 ## Literature Review 
-## Methods 
+A research project done by Prabhu Ramachandran of IIT-Madras in Chennai India looked at the effectiveness of python in computational fluid dynamic problems. Although, it was not the comparison of R and Python within this set of problems, the study did find a conclusion on the effectiveness of Python. Prabhu explained how the "number crunching code" was implemented in C++ but the analysis and management of the data was run using Python. After demonstrating his work he arrived at the conclusion that Python is "extremely well suited for scientific computations''. He explains how the built in packages make it extremely efficient and along with its power make it extremely fast. This would align with our findings that Python was a superior performer in the sense of accuracy and speed. 
+
+Another study done by Arturo Burgos of the Federal University of Uberlandia, tested the best programming language for Computational fluid dynamics between Matlab, Python, Fortran, and Julia. Although some of his work was hard to follow due to the advanced nature of the study he concluded that Python, although very effective, was actually the slowest out of these programming languages when it came to run time. That was interesting to read because we did not achieve these same results, but he added that because python was constantly improving their system and adding so many different libraries and modules it could be logical that Python has gotten faster since 2021. 
+
+References: 
+https://www.aero.iitb.ac.in/~prabhu/research/papers/pr_scipy04.pdf
+https://repositorio.ufu.br/bitstream/123456789/32272/4/AssessmentProgrammingLanguages.pdf
+
 ### Simulation Framework
 Our study aimed to simulate the flow rate (Q) of fluid through an orifice, influenced by four primary parameters: discharge coefficient (Cd), orifice diameter (dia), pressure drop(dP), and specific gravity (Sg). A Monte Carlo simulation approach was employed to generate a comprehensive dataset reflecting the variability of these parameters. This simulation was conducted independently in both Python and R to leverage and compare the capabilities of these programming languages.
 ### Parameter Definition and Randomization

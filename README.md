@@ -23,6 +23,7 @@ References:
 https://www.aero.iitb.ac.in/~prabhu/research/papers/pr_scipy04.pdf
 https://repositorio.ufu.br/bitstream/123456789/32272/4/AssessmentProgrammingLanguages.pdf
 
+## Methods
 ### Simulation Framework
 Our study aimed to simulate the flow rate (Q) of fluid through an orifice, influenced by four primary parameters: discharge coefficient (Cd), orifice diameter (dia), pressure drop(dP), and specific gravity (Sg). A Monte Carlo simulation approach was employed to generate a comprehensive dataset reflecting the variability of these parameters. This simulation was conducted independently in both Python and R to leverage and compare the capabilities of these programming languages.
 ### Parameter Definition and Randomization
